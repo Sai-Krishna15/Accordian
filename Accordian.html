@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+        integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;1,500&display=swap"
+        rel="stylesheet">
+    <title>Accordians</title>
+</head>
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        font-family: 'Roboto';
+    }
+
+    .container-fluid {
+        min-height: 100vh;
+        background-image: linear-gradient(45deg, rgb(125, 125, 235), rgb(102, 22, 22), rgb(234, 181, 82), rgb(209, 162, 162), rgb(164, 78, 93), rgb(214, 66, 214));
+    }
+
+    .container {
+        width: 100%;
+        min-height: 100vh;
+        background-color: #ddd;
+    }
+
+    .container h1 {
+        text-align: center;
+        background-color: beige;
+        font-size: 3rem;
+        color: blue;
+        font-weight: 300;
+        padding: .2rem;
+    }
+
+    .accordian {
+        width: 100%;
+        background-color: #caa0a0;
+        border-radius: .3rem;
+    }
+
+    .container .accordian .accordian-heading i {
+        cursor: pointer;
+        padding: .2rem;
+        background-color: #ddd;
+        border-radius: .3rem;
+    }
+
+    .container .accordian .accordian-heading i:hover {
+        background-color: #caa0a0;
+        color: #fff;
+    }
+
+    .container .accordian.active .accordian-heading {
+        color: #fff;
+        background-color: rgb(83, 83, 240);
+    }
+
+    .container .accordian.active .accordian-heading i {
+        transform: rotate(180deg);
+        transition: transform .5s;
+    }
+
+    .container .accordian.active .accordian-content {
+        display: block;
+    }
+
+    .accordian-wrapper {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .accordian-heading {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 1.7rem;
+        padding: .3rem;
+        border-bottom: 1px solid black;
+        width: 100%;
+    }
+
+    .accordian-content {
+        padding: .4rem;
+        text-align: justify;
+        color: #fff;
+        font-size: 1.5rem;
+        display: none;
+        animation: animate 0.3s linear backwards;
+        transform-origin: top;
+    }
+
+    @keyframes animate {
+        0% {
+            transform: scaleY(0);
+        }
+    }
+
+    .btn-answer {
+        margin: 10px;
+        font-size: 1.1rem;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div class="container-fluid">
+        <div class="container">
+            <h1>Frequently Asked Question's</h1>
+            <div class="accordian-wrapper">
+                <div class="accordian">
+                    <div class="accordian-heading">
+                        <h3 style="margin-top: .3rem;" id="q1">Web Developer</h3>
+                        <input type="button" value="Edit Question" class="btn btn-primary" onclick="editQuestion('q1')">
+                        <i class="fa-solid fa-chevron-down icon"></i>
+                    </div>
+                    <p class="accordian-content" id="a1">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ullam quisquam nihil libero culpa
+                        numquam sint asperiores aliquam pariatur cumque assumenda tempore commodi, maiores eum cum,
+                        alias facilis laudantium. Officia quod tenetur amet deleniti cum possimus, illo deserunt
+                        delectus magni sint suscipit nesciunt? Recusandae placeat quaerat voluptatum fugit est dolores?
+
+                    </p>
+                    <input type="button" value="Edit Answer" onclick="editAnswer('a1')"
+                        class="btn btn-success btn-answer">
+                </div>
+            </div>
+
+            <div class="accordian-wrapper">
+                <div class="accordian">
+                    <div class="accordian-heading">
+                        <h3 style="margin-top: .3rem;" id="q2">Web Designer</h3>
+                        <input type="button" value="Edit Question" class="btn btn-primary" onclick="editQuestion('q2')">
+                        <i class="fa-solid fa-chevron-down icon"></i>
+                    </div>
+                    <p class="accordian-content" id="a2">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ullam quisquam nihil libero culpa
+                        numquam sint asperiores aliquam pariatur cumque assumenda tempore commodi, maiores eum cum,
+                        alias facilis laudantium. Officia quod tenetur amet deleniti cum possimus, illo deserunt
+                        delectus magni sint suscipit nesciunt? Recusandae placeat quaerat voluptatum fugit est dolores?
+
+                    </p>
+                    <input type="button" value="Edit Answer" onclick="editAnswer('a2')"
+                        class="btn btn-success btn-answer">
+                </div>
+            </div>
+
+            <div class="accordian-wrapper">
+                <div class="accordian">
+                    <div class="accordian-heading">
+                        <h3 style="margin-top: .3rem;" id="q3">Full Stack Development</h3>
+                        <input type="button" value="Edit Question" class="btn btn-primary" onclick="editQuestion('q3')">
+                        <i class="fa-solid fa-chevron-down icon"></i>
+                    </div>
+                    <p class="accordian-content" id="a3">
+                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure ullam quisquam nihil libero culpa
+                        numquam sint asperiores aliquam pariatur cumque assumenda tempore commodi, maiores eum cum,
+                        alias facilis laudantium. Officia quod tenetur amet deleniti cum possimus, illo deserunt
+                        delectus magni sint suscipit nesciunt? Recusandae placeat quaerat voluptatum fugit est dolores?
+
+                    </p>
+                    <input type="button" value="Edit Answer" onclick="editAnswer('a3')"
+                        class="btn btn-success btn-answer">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let accordians = document.querySelectorAll('.accordian-wrapper .accordian');
+        accordians.forEach((acco) => {
+            acco.onclick = () => {
+                accordians.forEach((subcontent) => {
+                    subcontent.classList.remove('active');
+                })
+                acco.classList.add('active');
+            }
+        });
+
+        const editQuestion = (questionId) => {
+            var question = prompt("enter question")
+            if (question !== "") {
+                $("#" + questionId).text(question);
+            }
+        }
+
+        const editAnswer = (answerId) => {
+            var answer = prompt("Enter Answer");
+            if (answer !== "") {
+                $("#" + answerId).text(answer);
+            }
+        }
+
+    </script>
+</body>
+
+</html>
